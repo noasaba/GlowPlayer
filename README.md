@@ -1,3 +1,9 @@
+[![GitHub release](https://img.shields.io/github/v/release/noasaba/GlowPlayer?include_prereleases)](https://github.com/noasaba/GlowPlayer/releases)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![GitHub issues](https://img.shields.io/github/issues/noasaba/GlowPlayer)](https://github.com/noasaba/GlowPlayer/issues)
+[![Last Commit](https://img.shields.io/github/last-commit/noasaba/GlowPlayer)](https://github.com/noasaba/GlowPlayer/commits)
+
+
 # GlowPlayer
 
 ## English Description
