@@ -41,7 +41,7 @@
 - **Plugin Name:** GlowPlayer
 - **Version:** 1.0-SNAPSHOT
 - **API Version:** 1.21
-- **Author:** YourName
+- **Author:** nanosize
 
 ### License
 
@@ -85,7 +85,7 @@ See [LICENSE](LICENSE) for details.
 - **プラグイン名:** GlowPlayer
 - **バージョン:** 1.0-SNAPSHOT
 - **API バージョン:** 1.21
-- **作者:** YourName
+- **作者:** nanosize
 
 ### ライセンス
 
