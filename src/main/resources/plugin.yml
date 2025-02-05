@@ -1,0 +1,16 @@
+name: GlowPlayer
+version: '1.0-SNAPSHOT'
+main: com.noasaba.glowplayer.GlowPlayer
+api-version: '1.21'
+description: "全員がデフォルトで光り、/glow コマンドでオンオフ切り替え可能なプラグイン"
+author: YourName
+
+commands:
+  glow:
+    description: グローイングのオンオフを切り替えます。
+    usage: /glow
+
+permissions:
+  glowplayer.toggle:
+    description: グローイングのオンオフを切り替える権限
+    default: true
