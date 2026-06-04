@@ -29,7 +29,7 @@
 
 ### Installation
 
-1. Build or download the `GlowPlugin-1.0-SNAPSHOT.jar` file.
+1. Build or download the `GlowPlugin-1.1.jar` file.
 2. Place the JAR file into your server's `plugins` folder.
 3. Restart your server or reload the plugins.
 
@@ -57,7 +57,7 @@
 ### Plugin Information
 
 - **Plugin Name:** GlowPlayer
-- **Version:** 1.0-SNAPSHOT
+- **Version:** 1.1
 - **API Version:** 26.1.2
 - **Java Version:** 25
 - **Author:** nanosize
@@ -92,7 +92,7 @@ See [LICENSE](LICENSE) for details.
 
 ### インストール方法
 
-1. `GlowPlugin-1.0-SNAPSHOT.jar` ファイルをビルドまたはダウンロードしてください。
+1. `GlowPlugin-1.1.jar` ファイルをビルドまたはダウンロードしてください。
 2. ダウンロードした JAR ファイルをサーバーの `plugins` フォルダに配置します。
 3. サーバーを再起動するか、プラグインをリロードしてください。
 
@@ -120,7 +120,7 @@ See [LICENSE](LICENSE) for details.
 ### プラグイン情報
 
 - **プラグイン名:** GlowPlayer
-- **バージョン:** 1.0-SNAPSHOT
+- **バージョン:** 1.1
 - **API バージョン:** 26.1.2
 - **Java バージョン:** 25
 - **作者:** nanosize
