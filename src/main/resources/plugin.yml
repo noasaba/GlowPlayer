@@ -1,16 +1,105 @@
 name: GlowPlayer
 version: '1.0-SNAPSHOT'
 main: com.noasaba.glowplayer.GlowPlayer
-api-version: '1.21'
-description: "全員がデフォルトで光り、/glow コマンドでオンオフ切り替え可能なプラグイン"
-author: YourName
+api-version: '26.1.2'
+description: "Java 25 / Paper 26.1.2 対応。/glow でオンオフ、/glow blue などで色を厳格な権限付きで切り替えるプラグイン"
+author: nanosize
+default-permission: op
 
 commands:
   glow:
-    description: グローイングのオンオフを切り替えます。
-    usage: /glow
+    description: グローのオンオフと色を切り替えます。
+    usage: /glow [on|off|list|default|色]
+    permission: glowplayer.command
+    permission-message: "このコマンドを使用する権限がありません。"
 
 permissions:
+  glowplayer.admin:
+    description: GlowPlayer の全権限
+    default: op
+    children:
+      glowplayer.command: true
+      glowplayer.list: true
+      glowplayer.toggle: true
+      glowplayer.default: true
+      glowplayer.color.*: true
+  glowplayer.command:
+    description: /glow コマンドを実行する基本権限
+    default: op
+  glowplayer.list:
+    description: /glow list で使用可能な色を表示する権限
+    default: op
   glowplayer.toggle:
-    description: グローイングのオンオフを切り替える権限
-    default: true
+    description: /glow, /glow on, /glow off でグローを切り替える権限
+    default: op
+  glowplayer.default:
+    description: /glow default と /glow default <色> でサーバーのデフォルト色を確認・保存する権限
+    default: op
+  glowplayer.color.*:
+    description: すべてのグロー色を使用する権限
+    default: op
+    children:
+      glowplayer.color.white: true
+      glowplayer.color.gray: true
+      glowplayer.color.dark_gray: true
+      glowplayer.color.black: true
+      glowplayer.color.red: true
+      glowplayer.color.dark_red: true
+      glowplayer.color.gold: true
+      glowplayer.color.yellow: true
+      glowplayer.color.green: true
+      glowplayer.color.dark_green: true
+      glowplayer.color.aqua: true
+      glowplayer.color.dark_aqua: true
+      glowplayer.color.blue: true
+      glowplayer.color.dark_blue: true
+      glowplayer.color.light_purple: true
+      glowplayer.color.dark_purple: true
+  glowplayer.color.white:
+    description: /glow white を使用する権限
+    default: op
+  glowplayer.color.gray:
+    description: /glow gray を使用する権限
+    default: op
+  glowplayer.color.dark_gray:
+    description: /glow dark_gray を使用する権限
+    default: op
+  glowplayer.color.black:
+    description: /glow black を使用する権限
+    default: op
+  glowplayer.color.red:
+    description: /glow red を使用する権限
+    default: op
+  glowplayer.color.dark_red:
+    description: /glow dark_red を使用する権限
+    default: op
+  glowplayer.color.gold:
+    description: /glow gold を使用する権限
+    default: op
+  glowplayer.color.yellow:
+    description: /glow yellow を使用する権限
+    default: op
+  glowplayer.color.green:
+    description: /glow green を使用する権限
+    default: op
+  glowplayer.color.dark_green:
+    description: /glow dark_green を使用する権限
+    default: op
+  glowplayer.color.aqua:
+    description: /glow aqua を使用する権限
+    default: op
+  glowplayer.color.dark_aqua:
+    description: /glow dark_aqua を使用する権限
+    default: op
+  glowplayer.color.blue:
+    description: /glow blue を使用する権限
+    default: op
+  glowplayer.color.dark_blue:
+    description: /glow dark_blue を使用する権限
+    default: op
+  glowplayer.color.light_purple:
+    description: /glow light_purple を使用する権限
+    default: op
+  glowplayer.color.dark_purple:
+    description: /glow dark_purple を使用する権限
+    default: op

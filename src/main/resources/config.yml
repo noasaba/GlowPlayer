@@ -1,0 +1,3 @@
+# Default glow color for players who have not chosen a personal color in the current server session.
+# Valid values: white, gray, dark_gray, black, red, dark_red, gold, yellow, green, dark_green, aqua, dark_aqua, blue, dark_blue, light_purple, dark_purple
+default-color: gold
