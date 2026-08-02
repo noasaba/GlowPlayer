@@ -2,13 +2,13 @@
 
 ## 目的
 
-GlowPlayer を Java 25 / Paper 26.1.2 / Gradle で保守し、`/glow` によるオンオフ切り替えと `/glow blue`、`/glow red` などの複数色グローを、厳格な権限管理つきで実装・検証する。
+GlowPlayer を Java 25 / Paper 26.2 / Gradle で保守し、`/glow` によるオンオフ切り替えと `/glow blue`、`/glow red` などの複数色グローを、厳格な権限管理つきで実装・検証する。
 
 ## 前提
 
 - Java は 25 を使用する。
 - Gradle Wrapper は Java 25 を実行できる Gradle 9.1.0 以上を使用する。
-- Paper API は `io.papermc.paper:paper-api:26.1.2.build.+` を使用する。
+- Paper API は検証済みの `io.papermc.paper:paper-api:26.2.build.87-stable` に固定する。
 - コマンド登録は既存の `plugin.yml` を基本にし、`/glow` のサブ操作は Java 側でも必ず権限確認する。
 
 ## 実装ルール
@@ -45,7 +45,7 @@ GlowPlayer を Java 25 / Paper 26.1.2 / Gradle で保守し、`/glow` による�
 ## 受け入れ条件
 
 - Java 25 で Gradle ビルドが成功する。
-- Paper 26.1.2 API でコンパイルできる。
+- Paper 26.2 API でコンパイルできる。
 - `/glow`、`/glow on`、`/glow off`、`/glow list`、`/glow blue`、`/glow red` が意図どおり動く。
 - `/glow default blue` で `config.yml` の `default-color` が更新され、再起動後も保持される。
 - 権限がない操作は必ず拒否される。

@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
@@ -68,7 +69,7 @@ public class GlowPlayer extends JavaPlugin implements Listener, TabExecutor {
         for (Player player : Bukkit.getOnlinePlayers()) {
             applyGlow(player, stateFor(player));
         }
-        getLogger().info("GlowPlayer enabled for Paper 26.1.2 / Java 25.");
+        getLogger().info("GlowPlayer enabled for Paper 26.2 / Java 25.");
     }
 
     @Override
@@ -90,6 +91,11 @@ public class GlowPlayer extends JavaPlugin implements Listener, TabExecutor {
         Player player = event.getPlayer();
         GlowState state = stateFor(player);
         Bukkit.getScheduler().runTaskLater(this, () -> applyGlow(player, state), 1L);
+    }
+
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent event) {
+        clearGlowTeam(event.getPlayer());
     }
 
     @Override

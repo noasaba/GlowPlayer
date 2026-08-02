@@ -1,8 +1,8 @@
 name: GlowPlayer
 version: '${version}'
 main: com.noasaba.glowplayer.GlowPlayer
-api-version: '26.1.2'
-description: "Java 25 / Paper 26.1.2 対応。/glow でオンオフ、/glow blue などで色を厳格な権限付きで切り替えるプラグイン"
+api-version: '26.2'
+description: "Java 25 / Paper 26.2 対応。/glow でオンオフ、/glow blue などで色を厳格な権限付きで切り替えるプラグイン"
 author: nanosize
 default-permission: op
 

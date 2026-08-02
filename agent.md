@@ -2,7 +2,7 @@
 
 ## 実行方針
 
-このエージェントは GlowPlayer を Java 25 / Paper 26.1.2 対応の、複数色グローと厳格な権限管理を持つ Minecraft プラグインとして完成させる。作業は小さく進め、各修正後に Gradle で検証する。
+このエージェントは GlowPlayer を Java 25 / Paper 26.2 対応の、複数色グローと厳格な権限管理を持つ Minecraft プラグインとして完成させる。作業は小さく進め、各修正後に Gradle で検証する。
 
 ## フェーズ
 
@@ -13,7 +13,7 @@
 2. ビルド基盤更新
    - Gradle Wrapper を 9.1.0 以上へ更新する。
    - `targetJavaVersion` を 25 にする。
-   - Paper Maven repository を追加し、Paper API 26.1.2 を `compileOnly` で参照する。
+   - Paper Maven repository を追加し、検証済みの Paper API `26.2.build.87-stable` を `compileOnly` で参照する。
    - `GRADLE_USER_HOME=.gradle-cache ./gradlew build` で検証する。
 
 3. コマンド実装
@@ -32,6 +32,7 @@
 5. 状態管理
    - プレイヤーごとにオンオフと現在色を保持する。
    - join と respawn で状態を再適用する。
+   - quit でグロー用チームから外し、元のチーム所属を復元する。
    - disable 時はグロー用チームから外し、glowing を解除する。
 
 6. 検証
@@ -50,13 +51,13 @@ GRADLE_USER_HOME=.gradle-cache ./gradlew build
 Paper サーバー上で確認する場合:
 
 ```bash
-java -Xms2G -Xmx2G -jar paper-26.1.2.jar --nogui
+java -Xms2G -Xmx2G -jar paper-26.2.jar --nogui
 ```
 
 リモートデバッグする場合:
 
 ```bash
-java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -jar paper-26.1.2.jar --nogui
+java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -jar paper-26.2.jar --nogui
 ```
 
 ## 手動テスト
@@ -74,6 +75,6 @@ java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -jar p
 ## 完了条件
 
 - Gradle build 成功。
-- Paper 26.1.2 サーバーでロード成功。
+- Paper 26.2 サーバーでロード成功。
 - `/glow` 系コマンドの正常系と権限拒否系が確認済み。
 - 既知の不安点があれば README または issue に残す。

@@ -8,7 +8,7 @@
 
 ## English Description
 
-**GlowPlayer** is a Paper plugin for Java 25 / Paper 26.1.2 that makes players glow by default and lets permitted players toggle glow or choose a strict permission-controlled glow color.
+**GlowPlayer** is a Paper plugin for Java 25 / Paper 26.2 that makes players glow by default and lets permitted players toggle glow or choose a strict permission-controlled glow color.
 
 ### Features
 
@@ -29,7 +29,7 @@
 
 ### Installation
 
-1. Build or download the `GlowPlugin-1.1.jar` file.
+1. Build or download the `GlowPlugin-1.2.jar` file.
 2. Place the JAR file into your server's `plugins` folder.
 3. Restart your server or reload the plugins.
 
@@ -57,8 +57,8 @@
 ### Plugin Information
 
 - **Plugin Name:** GlowPlayer
-- **Version:** 1.1
-- **API Version:** 26.1.2
+- **Version:** 1.2
+- **API Version:** 26.2
 - **Java Version:** 25
 - **Author:** nanosize
 
@@ -71,7 +71,7 @@ See [LICENSE](LICENSE) for details.
 
 ## 日本語説明
 
-**GlowPlayer** は、Java 25 / Paper 26.1.2 向けに、プレイヤーをデフォルトで光らせ、権限に応じてオンオフや複数色のグローを切り替えられるプラグインです。
+**GlowPlayer** は、Java 25 / Paper 26.2 向けに、プレイヤーをデフォルトで光らせ、権限に応じてオンオフや複数色のグローを切り替えられるプラグインです。
 
 ### 特徴
 
@@ -92,7 +92,7 @@ See [LICENSE](LICENSE) for details.
 
 ### インストール方法
 
-1. `GlowPlugin-1.1.jar` ファイルをビルドまたはダウンロードしてください。
+1. `GlowPlugin-1.2.jar` ファイルをビルドまたはダウンロードしてください。
 2. ダウンロードした JAR ファイルをサーバーの `plugins` フォルダに配置します。
 3. サーバーを再起動するか、プラグインをリロードしてください。
 
@@ -120,8 +120,8 @@ See [LICENSE](LICENSE) for details.
 ### プラグイン情報
 
 - **プラグイン名:** GlowPlayer
-- **バージョン:** 1.1
-- **API バージョン:** 26.1.2
+- **バージョン:** 1.2
+- **API バージョン:** 26.2
 - **Java バージョン:** 25
 - **作者:** nanosize
 
