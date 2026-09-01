@@ -24,14 +24,35 @@
 - **Strict Permission Control:**  
   Command access, toggle access, color listing, and each color are controlled by separate permission nodes. Defaults are operator-only.
 
+- **TAB Compatibility:**
+  When TAB is detected, GlowPlayer stops managing scoreboard teams and exposes `%glowplayer_glowcolor%` through PlaceholderAPI so TAB remains the sole team manager.
+
 - **Lightweight and Simple:**  
   Designed to be minimal and efficient, ensuring low server overhead.
 
 ### Installation
 
-1. Build or download the `GlowPlugin-1.2.jar` file.
+1. Build or download the `GlowPlugin-1.3.jar` file.
 2. Place the JAR file into your server's `plugins` folder.
 3. Restart your server or reload the plugins.
+
+### TAB Compatibility
+
+TAB and glow colors both use scoreboard teams. GlowPlayer automatically enables compatibility mode when the `TAB` plugin is present and no longer moves players between teams.
+
+1. Install [PlaceholderAPI](https://modrinth.com/plugin/placeholderapi).
+2. Open TAB's `plugins/TAB/groups.yml`.
+3. Add `%glowplayer_glowcolor%` at the very end of every applicable `tagprefix`.
+4. Run `/tab reload` or restart the server.
+
+Example:
+
+```yaml
+_DEFAULT_:
+  tagprefix: '%vault-prefix%%glowplayer_glowcolor%'
+```
+
+The placeholder must be the last color code in `tagprefix`, as required by TAB's glow compatibility mechanism. `%glowplayer_color%` is an alias, and `%glowplayer_enabled%` reports the current on/off state.
 
 ### Usage
 
@@ -57,7 +78,7 @@
 ### Plugin Information
 
 - **Plugin Name:** GlowPlayer
-- **Version:** 1.2
+- **Version:** 1.3
 - **API Version:** 26.2
 - **Java Version:** 25
 - **Author:** nanosize
@@ -87,14 +108,35 @@ See [LICENSE](LICENSE) for details.
 - **厳格なパーミッション対応:**  
   コマンド基本権限、オンオフ権限、一覧表示権限、色ごとの権限を分けています。デフォルトは op のみです。
 
+- **TAB 互換モード:**
+  TAB を検出すると GlowPlayer の scoreboard team 操作を停止し、PlaceholderAPI の `%glowplayer_glowcolor%` から色をTABへ渡します。チーム管理はTABだけが行うため、所属競合を防げます。
+
 - **シンプルで軽量:**  
   シンプルで効率的な設計により、サーバーへの負荷を最小限に抑えます。
 
 ### インストール方法
 
-1. `GlowPlugin-1.2.jar` ファイルをビルドまたはダウンロードしてください。
+1. `GlowPlugin-1.3.jar` ファイルをビルドまたはダウンロードしてください。
 2. ダウンロードした JAR ファイルをサーバーの `plugins` フォルダに配置します。
 3. サーバーを再起動するか、プラグインをリロードしてください。
+
+### TABとの併用
+
+TABとグロー色は、どちらもscoreboard teamを使用します。`TAB` プラグインが存在する場合、GlowPlayerは互換モードへ自動的に切り替わり、プレイヤーをチーム間で移動しません。
+
+1. [PlaceholderAPI](https://modrinth.com/plugin/placeholderapi) を導入します。
+2. TABの `plugins/TAB/groups.yml` を開きます。
+3. 対象となる各 `tagprefix` の末尾へ `%glowplayer_glowcolor%` を追加します。
+4. `/tab reload` を実行するか、サーバーを再起動します。
+
+例:
+
+```yaml
+_DEFAULT_:
+  tagprefix: '%vault-prefix%%glowplayer_glowcolor%'
+```
+
+TABの仕様上、このプレースホルダーは `tagprefix` 内で最後の色コードにしてください。別名として `%glowplayer_color%`、オン・オフ確認用として `%glowplayer_enabled%` も利用できます。
 
 ### 使用方法
 
@@ -120,7 +162,7 @@ See [LICENSE](LICENSE) for details.
 ### プラグイン情報
 
 - **プラグイン名:** GlowPlayer
-- **バージョン:** 1.2
+- **バージョン:** 1.3
 - **API バージョン:** 26.2
 - **Java バージョン:** 25
 - **作者:** nanosize

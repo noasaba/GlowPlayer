@@ -35,7 +35,12 @@
    - quit でグロー用チームから外し、元のチーム所属を復元する。
    - disable 時はグロー用チームから外し、glowing を解除する。
 
-6. 検証
+6. TAB互換性
+   - TABを検出した場合、GlowPlayer側のscoreboard team操作を停止する。
+   - PlaceholderAPIへ `%glowplayer_glowcolor%` を登録し、選択色をレガシーカラーコードとして返す。
+   - TABの `tagprefix` 末尾にプレースホルダーを置き、TABだけがチームを管理する構成をREADMEへ明記する。
+
+7. 検証
    - Gradle build を通す。
    - コンパイルエラー、plugin.yml エラー、権限分岐エラーを分けて記録する。
    - 同じエラーが 3 回続いたら web で公式情報を確認する。
@@ -71,6 +76,8 @@ java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -jar p
 - `glowplayer.color.*` 付与ですべての色が動く。
 - `glowplayer.admin` 付与で全操作が動く。
 - リスポーン後も直前の状態と色が維持される。
+- TAB併用時はGlowPlayerがプレイヤーのチーム所属を変更しない。
+- `%glowplayer_glowcolor%` が選択色に対応する `&` カラーコードを返す。
 
 ## 完了条件
 

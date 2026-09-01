@@ -41,20 +41,29 @@ public class GlowPlayer extends JavaPlugin implements Listener, TabExecutor {
     private final Map<GlowColor, Team> glowTeams = new EnumMap<>(GlowColor.class);
     private GlowColor defaultColor = FALLBACK_DEFAULT_COLOR;
     private Scoreboard scoreboard;
+    private boolean tabCompatibilityMode;
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
         loadDefaultColor();
+        tabCompatibilityMode = Bukkit.getPluginManager().getPlugin("TAB") != null;
 
-        if (Bukkit.getScoreboardManager() == null) {
+        if (!tabCompatibilityMode && Bukkit.getScoreboardManager() == null) {
             getLogger().severe("Scoreboard manager is not available. GlowPlayer cannot start.");
             Bukkit.getPluginManager().disablePlugin(this);
             return;
         }
 
-        scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
-        registerGlowTeams();
+        if (tabCompatibilityMode) {
+            getLogger().info("TAB detected: scoreboard team handling is disabled to prevent conflicts.");
+            getLogger().info("Add %glowplayer_glowcolor% to the end of TAB's tagprefix.");
+        } else {
+            scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
+            registerGlowTeams();
+        }
+
+        registerPlaceholderExpansion();
         Bukkit.getPluginManager().registerEvents(this, this);
 
         PluginCommand glowCommand = getCommand("glow");
@@ -326,6 +335,36 @@ public class GlowPlayer extends JavaPlugin implements Listener, TabExecutor {
         return glowStates.computeIfAbsent(player.getUniqueId(), uuid -> new GlowState(true, defaultColor));
     }
 
+    String glowColorCode(UUID playerId) {
+        GlowState state = glowStates.get(playerId);
+        GlowColor color = state == null ? defaultColor : state.color();
+        return "&" + color.chatColor().getChar();
+    }
+
+    String defaultGlowColorCode() {
+        return "&" + defaultColor.chatColor().getChar();
+    }
+
+    boolean isGlowEnabled(UUID playerId) {
+        GlowState state = glowStates.get(playerId);
+        return state == null || state.enabled();
+    }
+
+    private void registerPlaceholderExpansion() {
+        if (!Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            if (tabCompatibilityMode) {
+                getLogger().warning("PlaceholderAPI is required for TAB glow colors. Install it and configure %glowplayer_glowcolor% in TAB.");
+            }
+            return;
+        }
+
+        if (new GlowPlayerPlaceholderExpansion(this).register()) {
+            getLogger().info("Registered PlaceholderAPI placeholders for TAB compatibility.");
+        } else {
+            getLogger().warning("Could not register PlaceholderAPI placeholders.");
+        }
+    }
+
     private void loadDefaultColor() {
         String configuredColor = getConfig().getString(DEFAULT_COLOR_CONFIG_PATH, FALLBACK_DEFAULT_COLOR.key());
         GlowColor loadedColor = GlowColor.fromInput(configuredColor);
@@ -340,6 +379,10 @@ public class GlowPlayer extends JavaPlugin implements Listener, TabExecutor {
 
     private void applyGlow(Player player, GlowState state) {
         player.setGlowing(state.enabled());
+        if (tabCompatibilityMode) {
+            return;
+        }
+
         clearGlowTeam(player);
         if (!state.enabled()) {
             return;
@@ -354,6 +397,10 @@ public class GlowPlayer extends JavaPlugin implements Listener, TabExecutor {
     }
 
     private void clearGlowTeam(Player player) {
+        if (tabCompatibilityMode || scoreboard == null) {
+            return;
+        }
+
         for (Team team : glowTeams.values()) {
             if (team.hasEntity(player)) {
                 team.removeEntity(player);
@@ -450,6 +497,10 @@ public class GlowPlayer extends JavaPlugin implements Listener, TabExecutor {
 
         private NamedTextColor namedTextColor() {
             return namedTextColor;
+        }
+
+        private ChatColor chatColor() {
+            return chatColor;
         }
 
         private String permission() {

@@ -19,9 +19,11 @@ GlowPlayer を Java 25 / Paper 26.2 / Gradle で保守し、`/glow` によるオ
 - `/glow <color>` は指定色に変更し、グローをオンにする。
 - `/glow default` は現在のサーバーデフォルト色を表示する。
 - `/glow default <color>` はサーバーデフォルト色を `config.yml` の `default-color` に保存する。
-- 色は scoreboard team の色で表現し、プレイヤーの glowing 状態とチーム所属を同期する。
+- 通常時は scoreboard team の色で表現し、プレイヤーの glowing 状態とチーム所属を同期する。
 - チーム名は `gp_` prefix を使い、他プラグインのチームと衝突しにくくする。
 - 他チームに所属していたプレイヤーをグロー用チームに移す場合は、可能な範囲で元チーム名を保持し、解除時に戻す。
+- TABを検出した場合はscoreboard teamを一切操作せず、PlaceholderAPIの `%glowplayer_glowcolor%` で色コードをTABへ渡す。
+- TABの `tagprefix` では `%glowplayer_glowcolor%` を末尾に置き、チーム管理をTABへ一本化する。
 
 ## 権限モデル
 
@@ -51,3 +53,4 @@ GlowPlayer を Java 25 / Paper 26.2 / Gradle で保守し、`/glow` によるオ
 - 権限がない操作は必ず拒否される。
 - tab completion には権限のある操作・色だけが出る。
 - プレイヤー参加時とリスポーン時に状態が再適用される。
+- TAB併用時に `gp_` チームへの追加・既存チームからの削除が行われず、PlaceholderAPIで選択色を取得できる。
